@@ -1,7 +1,8 @@
 # The primary author of this blog.
 # Must be the same as `author` in `_config.yml`.
 # Change `author1` to your shortname.
-author1:
+#author1:
+ haesiku:
   name:              <Haesik> <Ryu>
   email:             <haesiku@gmail.com>
 
@@ -28,7 +29,7 @@ author1:
   social:
     twitter:         <username>
     github:          <username>
-    # email:           mailto:<mail@domain.tld>
+    email:           mailto:<haesiku@gmail.com>
     # rss:             https://<url>/feed.xml
     # facebook:        <username>
     # google:          <number>

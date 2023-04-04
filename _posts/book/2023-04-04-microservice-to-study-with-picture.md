@@ -2,24 +2,101 @@
 layout: post
 title: 그림으로 이해하는 마이크로서비스 구조
 description: >
-  저자 : 다루사와 히로유키, 사사키 아츠모리, 모리야마 교헤이, 마츠이 마나부, 이시이 신이치, 미야케 쓰요시
-  역자 : 김완섭
-  출판사 : JPub
+  * 저자 : 다루사와 히로유키, 사사키 아츠모리, 모리야마 교헤이, 마츠이 마나부, 이시이 신이치, 미야케 쓰요시     
+  * 역자 : 김완섭     
+  * 출판사 : JPub
 tags: [book]
 author: author2
 canonical_url: https://jpub.tistory.com
 ---
 
-[Jekyll](https://jekyllrb.com) is a static site generator, an open-source tool for creating simple yet powerful websites of all shapes and sizes. From [the project's readme](https://github.com/mojombo/jekyll/blob/master/README.markdown):
+[그림으로 이해하는 마이크로서비스 구조] (사진)
+[그림으로 이해하는 마이크로서비스 구조] (출판사 책 설명 링크)
 
-**NOTE**: This post is outdated and only included for legacy reasons.
-See the [Documentation][docs]{:.heading.flip-title} for up-to-date instructions.
-{:.message}
+# 제 1 장 디지털 전환: 마이크로서비스가 중요해진 배경
+## 1.1. 디지털 전환이란
+- DX의 본질
+- 사람이 수작업으로 하던 프로세스를 디지털화된 프로세스로 변경, 즉 디지털 기술로 전환/적용하는 것
+- 디지털 전환을 통해 새로운 혁신을 만들어 내는 것
+- 단순 디지털로 전환이 아닌 비즈니스를 근본적으로 바꾸는 것
 
-  > Jekyll is a simple, blog aware, static site generator. It takes a template directory [...] and spits out a complete, static website suitable for serving with Apache or your favorite web server. This is also the engine behind GitHub Pages, which you can use to host your project’s page or blog right here from GitHub.
+## 1.2. 2025년의 벽
+- DX를 소홀히 해서 2025년 이후 큰 경제적 손실 예상 == 2025년의 벽
+- DX 인재 부족 → 기술, 투자, 비즈니스 전반에 악영향 → 경제적 손실
+- 비즈니스 경쟁력 저하의 원인 : 인재 부족, 기술 부채
+- 해결방안
+  - 인프라 표준화 : 컨테이너 가상화 (k8s)
+  - Application 현대화 (microservices)
+  - IT개발/운영 내재화를 통한 DevOps
 
-It's an immensely useful tool and one we encourage you to use here with Hyde.
+## 1.3. DX 추진을 위한 방침
+- 앞에 좋은 얘기 + 빠른 시장 변화에 대응할 수 있도록 조직 구성, Agile한 의사결정/문화
 
-Find out more by [visiting the project on GitHub](https://github.com/mojombo/jekyll).
+# 제 2 장 클라우드 네이티브 컴퓨팅과 마이크로서비스
+## 2.1. 클라우드 컴퓨팅 발자취
+- REST
+  - 클라우드 서비스 모델: On-Premise → Cloud (IaaS, PaaS, SaaS)
+  - + CI/CD, DevOps, Agile, … → Microservices
 
-[docs]: ../docs/7.5.2/index.md
+## 2.2. 클라우드 네이티브 컴퓨팅
+- Cloud Native
+  CNCF(Cloud Native Computing Foundation)라는 단체에서 정의하고 있음, 국제 표준 뭐 그런건 아님
+- 목적: 확장 가능한 애플리케이션을 구축/운영하는 것과 IT시스템에 최소한의 인력으로 자주, 계획한 만큼 임팩트가 있는 변경을 추가하는 것
+- → 비즈니스의 변화에 따른 시스템의 개선 요구를 쉽고 빠르게 적용/배포 할 수 있는 유연한 컴퓨팅 시스템
+- 구성: Container, Continuous Integration , Microservices, DevOps
+- Cloud Native Landscape : [Go]
+## 2.3. 클라우드 네이티브 컴퓨팅을 지탱하는 기술 요소
+- Cloud Native Trail Map : Cloud Native Computing 로드맵
+- 어떻게 도입할지, 어디서부터 시작할지 등 참고할 수 있음
+- Container : 서버 가상화
+- Linux Kernel 기능을 이용해서 OS수준의 가상환경 실현, OS 공유 + Container에는 앱 실행을 위한 Lib 까지만 포함
+- Hypervisor: Hardware 수준의 가상화 (하나의 H/W에 여러개의 가상 환경 호스팅, 각각 OS 만들어서 사용)
+- Container Orchestration
+- 가용성/확장성 위해 클러스터, 컨테이터 구축 많이 함 → Container 많아짐 → 많아진 Container의 구성/관리 필요
+  - → Kubernetes가 가장 많이 사용, 거의 표준에 가까움 (Google이 만들어서 공유)
+- DevOps
+  - 기획 → 설계/개발 → 통합/테스트 → 배포 → 피드백 → 기획 → … 같이 피드백의 빠른 반영해서 비즈니스의 목표 달성, 성과 최대화
+  - 정리하면, 애자일 개발 프로세스나 CD등의 기존 기법, 기술과 연계해 IT 시스템 개발/릴리스 속도 향상과 유연한 변경을 애플리케이션 개발/운영의 효율화라는 관점에서 실현하게 해주는 것
+- Cloud Native Computing을 진행하는 이유 → DevOps/k8s 관점에서만 설명하는 듯
+- IT 시스템 개발/운영 속도 향상 및 품질 향상 → CI/CD 자동화
+- 확장성(scalability), 고가용성(high availability) → Kubernetes(쉽게 구성하고 관리 가능)
+- 비용 절감 → Kubernetes(multi-platform 구성)
+
+## 2.4. 마이크로서비스란?
+- 정의: Cloud에 최적화된 Application
+- 마이크로서비스 아키텍처
+  - 독립성, 응집성을 갖는 소프트웨어 컴포넌트(서비스)를 여러개 조합해서 하나의 시스템을 구축하는 소프트웨어의 형태
+- 마이크로서비스 아키텍처 스타일
+  - 인프라/실행 환경: PaaS, Container
+  - 개발/운영 기법: DevOps, Agile Development Process, DDD, SRE
+  - 개발/운영 환경: CI/CD
+  - 애플리케이션 통합: REST, Messaging, API, Eventual Consistency
+- 장점
+  - 빠르고 유연한 애플리케이션 변경
+  - 작은 서비스 단위의 확장
+  - 장애 격리, 빠른 복구
+- 단점
+  - 빈번한 통신, 통신 지연
+  - 분산된 데이터의 동기화, 정합성 이슈
+  - 모니터링, Tracing
+  - Learning Curve: 실제 프로젝트에서는 이 부분이 제일 문제임 (모르는, 조금 아는, …)
+- 단점이 커도 사용하는 이유?
+  - 빠르고 유연한 애플리케이션 변경 → 시장 변화에 빠른 대응, 선점 == Business Agility
+
+## 2.5. 마이크로서비스 특징
+- 서비스를 사용한 컴포넌트 설계: 작은 단위로 개발, 가벼운 통신 프로토콜을 사용한 연계
+- 비즈니스 기능을 기준으로 한 팀 구성: Cross-Functional Team, Conway’s Law
+- 프로젝트가 아닌 제품을 파악해서 개발/운영: 최종 사용자의 피드백을 반영, 조금씩 적시에 릴리즈 하는 방식
+- 지능적인 엔드포인트와 단순한 파이프
+- 비중앙집권적인 개발 언어, 도구 선택: Polyglot, 서비스 별 최적의 개발언어, DB, 설계패턴 등 알아서 선정
+- 단점: 개발팀 → 운영팀 으로 이관되는 경우 다양한 기술 사용에 따른 유지보수 난이도 높아짐
+- 비중양집권적인 데이터 관리
+- 인프라 자동화: 실현하기 위한 자동화된 CI/CD
+- 장애/오류 발생을 전제로 한 설계
+- 선진적인 설계
+
+## 2.6. 마이크로서비스의 개발/운영 흐름: Agile
+
+## 2.7. 마이크로서비스의 적용 기준
+- 장점, 단점을 비교해서 단점을 상쇄할 만한 가치가 있으면 적용, 아니면 적용하지 않는게 좋음
+- 소형 시스템, 비교적 간단한 시스템은 연습용 정도로, 실제라면 의미 없음

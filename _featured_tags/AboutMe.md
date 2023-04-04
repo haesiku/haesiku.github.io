@@ -1,11 +1,11 @@
 ---
 layout: list
-title: Portfolio
-slug: portfolio
+title: About Me
+slug: aboutme
 menu: true
-order: 5
+order: 1
 description: >
-  portfolio description
+  I'm ...
 accent_color: '#268bd2'
 accent_image:
   background: '#202020'

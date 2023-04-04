@@ -3,7 +3,7 @@ layout: list
 title: I'm ...
 slug: iam
 menu: true
-order: 4
+order: 2
 description: >
   I'm ...
 accent_color: '#268bd2'

@@ -44,38 +44,57 @@ Heroku는 12 Factors 개발에 "Pattern of Enterprise Application Architecture",
 11. Logs : Treat logs as event streams
 12. Admin processes : Run admin/management tasks as one-off processes
 
-### Original 12 Factors에 최신 지침을 추가한 Beyond 12 Factors도 알아보자.
-1. One Codebase, One Application
-2. API First
-3. Dependency Management
-4. Design, Build, Release, And Run
-5. Configuration, Credentials, and Code
-6. Logs
-7. Disposability
-8. Backing Services
-9. Environment Parity
-10. Administrative Processes
-11. Port Binding
-12. Stateless Processes
-13. Concurrency
-14. Telemetry
-15. Authentication and Authorization
+Original 12 Factors에 최신 지침을 추가한 Beyond 12 Factors도 알아보자.
 
-
-# Contents
+# Beyond 12 Factors
 ## 1. One Codebase, One Application
+
+> Cloud Native Application은 항상 버전 관리 시스템에서 추적/관리되는 단일 코드 베이스로 구성해야 한다.
+
+하나의 Monolith 구조의 애플리케이션을 여러개의 Code Repository로 구성하는 경우, 애플리케이션의 빌드/배포를 자동화할 수 없다. 아얘 불가능하다.
+
+하나의 애플리케이션을 관리하는 Code Repository 내에 별도 작업자가 있는 경우, 동일한 Code Repository의 Root를 공유하더라도 내부의 단일 애플리케이션을 위한 별도 Codebase가 있게 된다.
+
+반대로 하나의 Codebase에 여러개의 애플리케이션을 관리하는 경우, 여러 팀에서 단일 Codebase를 관리하고 있다는 것을 의미하며, 버전관리에 여러움이 있을 수 있다. 내가 담당하는 모듈의 변경이 없었는데, 다른 영역의 변경에 따라 버전이 같이 올라가게 되는 문제 등이 있을 수 있다.
+하나의 Codebase에 여러개의 애플리케이션을 관리할 수는 있지만 그건 공유코드가 아니라 각각이 Codebase라는 것을 의미한다.
+
+당연한 얘기지만, 코드가 마이크로서비스여야 한다는 의미는 아니다.
+
 ## 2. API First
-### Why API First?
-### Building Services API First
-## 3. Dependency Management
+> 기존 12 Factors에는 없던 항목으로, 개발중인 애플리케이션의 유형과 상관없이 Cloud에 배포를 목적으로 애플리케이션을 구축하는 경우, 해당 시스템을 Cloud 환경의 에코 시스템에 참여시키는 것을 의미한다.
+
+### - Why API First?
+클라우드 환경의 에코시스템 내에 하나의 서비스로 구축/운영되려면 API라는 규정을 준수해야 한다. API가 곧 해당 서비스에서 제공하는 기능이므로, API를 구현을 목표로 개발하는 API First 방식을 따르는 것도 좋다.
+
+### - Building Services API First
+클라우드 내의 각 애플리케이션의 기능은 API를 통해 충족된다. 웹이든 모바일이든 사용자 인터페이스도 실제로는 API의 소비자라고 할 수 있다. (소비자: API를 호출해서 원하는 결과를 얻어가는...)
+따라서, API를 먼저 설계하면 코드 구현 전에 이해관계자(내부 팀, 고객, API를 사용하려는 조직이나 팀)와 논의하기가 용이하다. 이 논의를 통해 User Story를 만들고 API를 모의하고, 사전에 테스트 문서도 생성할 수 있다. 즉 API를 통해 해당 애플리케이션의 기능/연동을 명확히 정의함으로써 명확한 개발과 연동을 사전에 검증하고 개발할 수 있다는 장점이 있다는 것이다.
+
+## 3. Dependency Management (의존성 관리)
+> 원래 12 Factors의 두번째 요소로 응용프로그램의 종속성의 관리방법, 위치 및 시기를 관리한다.
+
 ### Reliance on the Mommy Server
+Mommy Server.. 엄마 서버로 해석하는게 맞는지 잘 모르겠지만, 뒤에 반대말이 단일 빌드 아티펙트... 라는 걸 보니 엄마보다는 애플리케이션의 모든 정보를 다 갖고 있는 서버의 의미로 해석하는게 좋을 것 같다.
+즉, 기존 엔터프라이즈 환경에서는 애플리케이션이 필요한 모든 것을 제공하고, 의존성 관리부터 호스팅할 서버 정의한 것까지 애플리케이션의 모든 요구사항을 Mommy Server에서 처리했었다는 내용이다.
+
 ### Modern Dependency Management
+모던, 즉 현대의 의존성 관리는 Java 언어의 경우 maven, gradle이 대표적이다. 
+Cloud Native Application은 시스템 전체의 의존성을 한번에 관리하지 않고(할수도 없다), 애플리케이션 별로 의존성을 적적하게 관리하는 것이 애플리케이션별로 개선/배포에 적합하다.
+각 애플리케이션(==마이크로서비스)별로 요구에 따라 의존성을 관리해야 한다라는 내용이다.
 ## 4. Design, Build, Release, Run
+> 원래 12 Factors의 다섯번째 요소로 Build, Release, Run의 각 단계는 명확하게 분리해야 한다.
+설계/개발/배포/실행의 전 과정을 CI/CD Pipeline을 통해 구성하며, 각 단계는 격리되어 개별적으로 동작/실행해야 한다. 
 ### Design
+개발자는 애플리케이션의 의존성을 가장 잘 이해하고 있으므로, 설계단계에서 의존성을 선언/정의하고 애플리케이션과 함께 제공하거나 번들로 제공될 수 있도록 해야한다.
 ### Build
+빌드 단계는 Code Repository가 바이너리 아티펙트로 변환되는 단계... 쉽게 말하면, Code가 배포/실행 가능한 형태로 만드는 단계란 뜻이다.
 ### Release
+클라우드 환경이라면 빌드된 애플리케이션을 클라우드 환경으로 Push하는 것이다. 이때 애플리케이션과 애플리케이션 실행을 위한 환경정보, 구성정보가 통합된다. 
 ### Run
-## 5. Configuration, Credentials, and Code
+일반적으로 애플리케이션이 컨테이너(Docker, Garden, Warden 등)에 배치되고 프로세스가 시작되어 애플리케이션이 실행된다.
+
+목표는 자동화된 테스트 및 배포를 통해 높은 신뢰도를 유지하면서 배포까지의 속도를 높이는데 있다.
+## 5. Configuration, Credentials, and Code (구성, 자격증명, 그리고 코드)
 ### Externalizing Configuration
 ## 6. Logs
 ## 7. Disposability

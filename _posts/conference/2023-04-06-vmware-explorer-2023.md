@@ -1,6 +1,6 @@
 ---
 layout: post
-title: VMware Exporer korea 2023
+title: VMware Exporer korea 2023 참석 후기
 description: >
   클라우드, 앱, 기기, 워크스페이스, 보안, 컴플라이언스, 정보 보호, 데이터 주권, 재해 복구에 이르기까지 간소화된 엔드 투 엔드 툴과 플랫폼을 통한 성공적인 멀티 클라우드 운영 방안에 대해 인사이트를 얻을 수 있으며, 다양한 산업군의 개발자와 커뮤니케이션을 할 수 있다.
 

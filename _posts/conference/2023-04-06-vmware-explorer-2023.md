@@ -15,7 +15,7 @@ canonical_url: https://www.vmware.com/explore/kr.html
 
 이번 컨퍼런스는 Tanzu Labs가 어떻게 일하는지 코로나로 2~3년 조용했는데 어떤 변화와 혁신이 있었는지 확인해보기 위해 참석했다.
 
-## 내가 들었던 세션들
+## 후기
 오전 공통 세션은 다 들었다.
 
 

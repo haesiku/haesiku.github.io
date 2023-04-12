@@ -44,7 +44,8 @@ canonical_url: https://jpub.tistory.com
 - 목적: 확장 가능한 애플리케이션을 구축/운영하는 것과 IT시스템에 최소한의 인력으로 자주, 계획한 만큼 임팩트가 있는 변경을 추가하는 것
 - → 비즈니스의 변화에 따른 시스템의 개선 요구를 쉽고 빠르게 적용/배포 할 수 있는 유연한 컴퓨팅 시스템
 - 구성: Container, Continuous Integration , Microservices, DevOps
-- Cloud Native Landscape : [Go]
+- Cloud Native Landscape : [Go](https://landscape.cncf.io){:target="_blank"}
+
 ## 2.3. 클라우드 네이티브 컴퓨팅을 지탱하는 기술 요소
 - Cloud Native Trail Map : Cloud Native Computing 로드맵
 - 어떻게 도입할지, 어디서부터 시작할지 등 참고할 수 있음

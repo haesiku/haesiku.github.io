@@ -1,11 +1,11 @@
 ---
 layout: list
-title: Portfolio
-slug: portfolio
+title: Daily
+slug: daily
 menu: true
-order: 4
+order: 3
 description: >
-  portfolio description
+  I'm ...
 accent_color: '#268bd2'
 accent_image:
   background: '#202020'
